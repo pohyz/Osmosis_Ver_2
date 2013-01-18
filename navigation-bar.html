@@ -24,107 +24,83 @@
       #welcome_msg{
 	      position:relative;
 	      top: 5px;
-	      float:right;
 	      color:grey;
+	      float:right;
 	      
       }
-      
-      #plus_sign{
-	      position:relative;
-	      top: -5px;
-	      left:-10px;
-	      color:red;
-	      
-      }
-      
-      #notify_btn{
-	      position:relative;
-	      top: 0px;
-	      left:10px;
-      
-      }
-      
+            
       #notify_badge{
 	      position:relative;
 	      top: -5px;
-	      left:-90px;
+	      left:15px;
 
       }
       
       #logo_img{
 	      position:relative;
-	      top: 10px;
+	      top: 5px;
 	      left: 0px;
+	      float:left;
+	      
       }
     </style>
-    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="assets/ico/favicon.png">
   </head>
 
   <body>
 
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <img src="assests/img/osmosisLogo.png" width=9% id="logo_img">
-          <div id="welcome_msg">Welcome, {{name}} | <a href="index-for-log-in.html" >Logout</a></div>
+      <div class="container">
+
+          <img src="assets/img/OsmosisLogo.png" width=8% id="logo_img">
+          
+          <div id="welcome_msg">Welcome, {{name}} | <a href="index-for-log-in.html">Logout</a></div>
           <br>
           <br>
-         
-            <ul class="nav" >
-              <li class="active"><a href="#" id="tabcolor"><i class="icon-home icon-white"></i> HOME</a></li>
-              <li><a href="#about" >PROFILE</a></li>
-              <li><a href="#contact">PROJECT CATALOG</a></li>
-              <li><a href="#contact">TEAM CATALOG</a></li>
-              <li><a href="#contact">FAQ</a></li>
+
+            <ul class="nav">
+              <li class="active"><a href="#"><i class="icon-home icon-white"></i> HOME</a></li>
+              <li><a href="#profile" >PROFILE</a></li>
+              <li><a href="#project_catalog">PROJECT CATALOG</a></li>
+              <li><a href="#team_catalog">TEAM CATALOG</a></li>
+              <li><a href="#faq">FAQ</a></li>
               
             </ul>
+                
+           <div align="right">
+           
+            <span class="badge badge-important" id="notify_badge">1</span>
+            <button class="btn btn-small btn-warning" type="button"><b>Notification</b></button>&nbsp
+            <button class="btn btn-small btn-primary" type="button"><i class="icon-white icon-plus"></i> <b>Proposal</b></button>&nbsp
+            <button class="btn btn-small btn-primary" type="button"><i class="icon-white icon-plus"></i> <b>Project</b></button>&nbsp
+            <button class="btn btn-small btn-primary" type="button"><i class="icon-white icon-plus"></i> <b>Team</b></button>
             
-            <div align="right">
-            <button class="btn btn-small btn-warning" type="button" id="notify_btn"><b>Notification</b></button><span class="badge badge-important" id="notify_badge">1</span>
-            <button class="btn btn-small btn-primary" type="button">Create Proposal</button>
-            <i class="icon-white icon-plus" id="plus_sign"></i><button class="btn btn-small btn-primary" type="button">Create Project</button>
-            <i class="icon-white icon-plus" id="plus_sign"></i><button class="btn btn-small btn-primary" type="button">Create Team</button>
-            <i class="icon-white icon-plus" id="plus_sign"></i>
-            </div>
+           </div>
             
-         </div>
+       
       </div>
+      
     </div>
-
+  </div>
   
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     
-    <script src="assets/js/bootstrap-transition.js"></script>
-    <script src="assets/js/bootstrap-alert.js"></script>
-    <script src="assets/js/bootstrap-modal.js"></script>
-    <script src="assets/js/bootstrap-dropdown.js"></script>
-    <script src="assets/js/bootstrap-scrollspy.js"></script>
-    <script src="assets/js/bootstrap-tab.js"></script>
-    <script src="assets/js/bootstrap-tooltip.js"></script>
-    <script src="assets/js/bootstrap-popover.js"></script>
-    <script src="assets/js/bootstrap-button.js"></script>
-    <script src="assets/js/bootstrap-collapse.js"></script>
-    <script src="assets/js/bootstrap-carousel.js"></script>
-    <script src="assets/js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/bootstrap/bootstrap-transition.js"></script>
+    <script src="assets/js/bootstrap/bootstrap-alert.js"></script>
+    <script src="assets/js/bootstrap/bootstrap-modal.js"></script>
+    <script src="assets/js/bootstrap/bootstrap-dropdown.js"></script>
+    <script src="assets/js/bootstrap/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/bootstrap/bootstrap-tab.js"></script>
+    <script src="assets/js/bootstrap/bootstrap-tooltip.js"></script>
+    <script src="assets/js/bootstrap/bootstrap-popover.js"></script>
+    <script src="assets/js/bootstrap/bootstrap-button.js"></script>
+    <script src="assets/js/bootstrap/bootstrap-collapse.js"></script>
+    <script src="assets/js/bootstrap/bootstrap-carousel.js"></script>
+    <script src="assets/js/bootstrap/bootstrap-typeahead.js"></script>
 
   </body>
 </html>
