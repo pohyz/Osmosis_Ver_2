@@ -7,6 +7,8 @@ var myApp = angular.module('app', ['ngResource']).
   config(['$routeProvider', function($routeProvider) {
   $routeProvider.
       when('/main', {templateUrl: 'app/home-page.html'}).
+      when('/signup', {templateUrl: 'app/index-for-sign-up.html', controller: SignupCtrl}).
+      when('/index', {templateUrl: 'app/index-for-log-in.html', controller: LoginCtrl}).
       otherwise({redirectTo: '/index'});
 }]);
 
