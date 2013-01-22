@@ -3,7 +3,7 @@
 //var testing = window.location.search.replace("?testing=", "");
 //var testing = 'true';
 
-var myApp = angular.module('app', ['ngResource']).
+angular.module('myApp', ['ngResource']).
   config(['$routeProvider', function($routeProvider) {
   $routeProvider.
       when('/main', {templateUrl: 'app/home-page.html'}).
