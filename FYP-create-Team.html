@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Osmosis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <!--this is for the tags/labels-->
+    <script src="assets/js/jquery.tagsinput.js"></script>
+
+    <!-- Le styles -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <!--this is for the tags/labels-->
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.tagsinput.css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      
+/*
+     #profile-name{
+     		position:relative;
+     		top:30px;
+     		left:-10px;
+     		
+     		
+	     
+      }
+*/
+
+
+
+	#pro{
+		position:relative;
+		top:25px;
+		
+		
+		
+		
+	}
+	
+	#sort-by{
+		position:relative;
+		right:-880px;	
+		
+	}
+	
+	#sortTeams{
+		position:relative;
+		right:-900px;
+		
+	}
+      #welcome_msg{
+	      position:relative;
+	      top: 5px;
+	      float:right;
+	      color:grey;
+	      
+      }
+      
+      #plus_sign{
+	      position:relative;
+	      top: -5px;
+	      left:-10px;
+	      color:red;
+	      
+      }
+      
+      #notify_btn{
+	      position:relative;
+	      top: 0px;
+	      left:10px;
+      
+      }
+      
+      #notify_badge{
+	      position:relative;
+	      top: -5px;
+	      left:-90px;
+
+      }
+      
+      #logo_img{
+	      position:relative;
+	      top: 10px;
+	      left: 0px;
+      }
+
+       
+      
+      
+
+      
+ 
+
+    </style>
+    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
+
+      <!--this is the jQuery for labels/tags-->
+      <script type="text/javascript">
+
+          function onAddTag(tag) {
+              alert("Added a tag: " + tag);
+          }
+          function onRemoveTag(tag) {
+              alert("Removed a tag: " + tag);
+          }
+
+          function onChangeTag(input,tag) {
+              alert("Changed a tag: " + tag);
+          }
+
+          $(function() {
+
+              $('#tags_1').tagsInput({width:'auto'});
+              $('#tags_2').tagsInput({
+                  width: 'auto',
+                  onChange: function(elem, elem_tags)
+                  {
+                      var languages = ['php','ruby','javascript'];
+                      $('.tag', elem_tags).each(function()
+                      {
+                          if($(this).text().search(new RegExp('\\b(' + languages.join('|') + ')\\b')) >= 0)
+                              $(this).css('background-color', 'yellow');
+                      });
+                  }
+              });
+              $('#tags_3').tagsInput({
+                  width: 'auto',
+
+                  //autocomplete_url:'test/fake_plaintext_endpoint.html' //jquery.autocomplete (not jquery ui)
+                  autocomplete_url:'test/fake_json_endpoint.html' // jquery ui autocomplete requires a json endpoint
+              })
+              $('#tags_4').importTags('foo,bar,baz');
+              ;
+
+
+// Uncomment this line to see the callback functions in action
+//			$('input.tags').tagsInput({onAddTag:onAddTag,onRemoveTag:onRemoveTag,onChange: onChangeTag});
+
+// Uncomment this line to see an input with no interface for adding new tags.
+//			$('input.tags').tagsInput({interactive:false});
+          });
+
+      </script>
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <img src="assets/img/osmosisLogo.png" width=9% id="logo_img">
+          <div id="welcome_msg">Welcome, {{name}} | <a href="index-for-log-out.html" >Logout</a></div>
+          <br>
+          <br>
+         
+            <ul class="nav" >
+              <li class="active"><a href="#" id="tabcolor"><i class="icon-home icon-white"></i> HOME</a></li>
+              <li><a href="#about" >PROFILE</a></li>
+              <li><a href="#contact">PROJECT CATALOG</a></li>
+              <li><a href="#contact">TEAM CATALOG</a></li>
+              <li><a href="#contact">FAQ</a></li>
+              
+            </ul>
+            
+            <div align="right">
+            <button class="btn btn-small btn-warning" type="button" id="notify_btn"><b>Notification</b></button><span class="badge badge-important" id="notify_badge">1</span>
+            <button class="btn btn-small btn-primary" type="button">Create Proposal</button>
+            <i class="icon-white icon-plus" id="plus_sign"></i><button class="btn btn-small btn-primary" type="button">Create Project</button>
+            <i class="icon-white icon-plus" id="plus_sign"></i><button class="btn btn-small btn-primary" type="button">Create Team</button>
+            <i class="icon-white icon-plus" id="plus_sign"></i>
+            </div>
+            
+         </div>
+      </div>
+    </div>
+
+<br/><br/><br/>
+      
+      <!-- profile start -->
+   
+
+      
+   
+      
+       <!-- start of update button and placeholder -->
+      <div class="container-fluid"> 
+      
+      <div class = "span10">
+			      
+      <div class = "row-fluid">
+
+<form class="form-horizontal">  
+        <fieldset>  
+          <legend>Create Team</legend>
+          <div class="control-group">  
+            <label class="control-label" for="projectName">Team Name*</label>
+            <div class="controls">  
+              <input type="text" class="input-xlarge" id="projectName" required>  
+        
+            </div> 
+            <br/> 
+            
+           <div class="control-group">  
+            <label class="control-label" for="projectObjective">Team Members*</label>
+            <div class="controls">  
+              <textarea class="input-xlarge" id="projectObjective" rows="3"></textarea>  
+            </div>  
+          </div> 
+          
+          
+          <div class="control-group">  
+            <label class="control-label" for="technicalRequirements">Contact Email*</label>
+            <div class="controls">  
+              <textarea class="input-xlarge" id="technicalRequirements" rows="3"></textarea>  
+            </div>  
+          </div>           
+           
+          
+         <div class="control-group">  
+            <label class="control-label" for="resourcesProvided">Description*</label>
+            <div class="controls">  
+              <textarea class="input-xlarge" id="resourcesProvided" rows="3"></textarea>  
+            </div>  
+          </div>   
+          
+          
+          <div class="control-group">  
+            <label class="control-label" for="keyLearningPoints">Area of Project Interests*</label>
+            <div class="controls">
+                <input id="tags_2" type="text" class="tags" value="php,ios,javascript,ruby,android,kindle" />
+            </div>
+          </div>
+
+           <div class="control-group">  
+            <label class="control-label" for="contactPerson">Team Website</label>
+            <div class="controls">  
+              <input type="text" class="input-xlarge" id="contactPerson" required>  
+        
+            </div> 
+            <br/>   
+            
+          <div class="control-group">  
+            <label class="control-label" for="contactEmail">Looking for Team Members?*</label>
+            <div class="controls">
+                <input type="radio" name="choice" value="Yes">Yes
+                <input type="radio" name="choice" value="No">No<br>
+            </div> 
+            <br/>
+
+          <div class="form-actions">  
+            <button type="submit" class="btn btn-primary">Save changes</button>  
+            <button class="btn">Cancel</button>  
+          </div>  
+        </fieldset>  
+</form>  
+	     </div>			      
+			   
+      </div>
+
+	      <div class ="row-fluid">
+	      <br/><br/><br/><br/><br/>
+		      <div class = "span2">
+			            <p id="updateButton"><a class="btn" href="#">Add an attachment &raquo;</a></p>
+			            
+			      
+		      </div>
+	      </div>
+
+
+		      
+<!-- end update button and place holder -->
+	      
+         <!-- end profile --> 
+      
+    
+
+
+
+         
+           
+      
+      <!-- end .row -->
+  
+      <!-- end .row -->
+      
+      
+
+
+
+      <footer>
+      	<p>* denotes compulsory field</p>
+        <p>&copy; Company 2012</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    
+    <script src="assets/js/angular/angular.min.js"></script>
+    <script src="assets/js/angular/angular-resource.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/controllers.js"></script>
+    <script src="assets/ui-bootstrap-tpls-0.1.0-SNAPSHOT.min.js"></script>
+    <script src="assets/js/bootstrap/bootstrap-transition.js"></script>
+    <script src="assets/js/bootstrap/bootstrap-alert.js"></script>
+    <script src="assets/js/bootstrap/bootstrap-modal.js"></script>
+    <script src="assets/js/bootstrap/bootstrap-dropdown.js"></script>
+    <script src="assets/js/bootstrap/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/bootstrap/bootstrap-tab.js"></script>
+    <script src="assets/js/bootstrap/bootstrap-tooltip.js"></script>
+    <script src="assets/js/bootstrap/bootstrap-popover.js"></script>
+    <script src="assets/js/bootstrap/bootstrap-button.js"></script>
+    <script src="assets/js/bootstrap/bootstrap-collapse.js"></script>
+    <script src="assets/js/bootstrap/bootstrap-carousel.js"></script>
+    <script src="assets/js/bootstrap/bootstrap-typeahead.js"></script>
+
+  </body>
+</html>
