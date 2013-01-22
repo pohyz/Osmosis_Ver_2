@@ -23,7 +23,7 @@
     
   </head>
 
-  <body ng-controller="UserController">
+  <body ng-controller="UserTypeCtrl">
   
   
   <!-------------------------- navigation bar -------------------------->
@@ -53,9 +53,15 @@
   <center>
   <h3>Choose an account type:</h3>
   <br>
-          <a href="#"><img src="assets/img/corp_btn.png" width=20%></a>
+          
+          <form ng-submit="updateUserType_C()">
+          <input type="image" src="assets/img/corp_btn.png" alt="Submit" width=20%>
+          </form>
 
-          <a href="#"><img src="assets/img/student_btn.png" width=20%></a>
+          <form ng-submit="updateUserType_I()">
+          <input type="image" src="assets/img/student_btn.png" alt="Submit" width=20%>
+          </form>
+          
   </center>
   
   <br>  

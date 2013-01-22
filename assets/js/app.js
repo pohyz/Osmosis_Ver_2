@@ -1,7 +1,7 @@
 'use strict';
 
 //var testing = window.location.search.replace("?testing=", "");
-var testing = 'true';
+//var testing = 'true';
 
 var myApp = angular.module('app', ['ngResource']).
   config(['$routeProvider', function($routeProvider) {

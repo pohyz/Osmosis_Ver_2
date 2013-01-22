@@ -2,48 +2,40 @@
 
 /* Controllers */
 
-function UserController($scope,$resource){
-        $scope.user = $resource('/api/user').get();
+function LoginCtrl($scope,$resource){
+  $scope.Model = $resource("http://galaxy-osmosis.appspot.com/db/link",
+    {},
+    {"send": {method: 'JSONP', isArray: false, params: {callback: 'JSON_CALLBACK'}}}
+    );
+    $scope.login_url;
+    $scope.nickname;
+    $scope.getLink = function(){
+
+      $scope.Model.send({}, function(response){
+
+        $scope.login_url = response.login_url;
+        $scope.nickname = response.nickname;
+      });
+    };
+
+    $scope.getLink();
 }
 
-function LoginCtrl($scope,$resource){
-        $scope.user_type = "user";
-        $scope.login_type = "login";
-        $scope.Model = $resource('http://galaxy-osmosis.appspot.com/:user_type/:ftn',
-                                {},
-                                {'send': {method: 'JSONP', isArray: false, params:{callback: 'JSON_CALLBACK'}}}
-                        );
+function UserTypeCtrl($scope,$resource){
+  $scope.Model = $resource("http://galaxy-osmosis.appspot.com/db/:ut_method",
+    {},
+    {"send": {method: 'JSONP', isArray: false, params: {callback: 'JSON_CALLBACK'}}}
+    );
+  $scope.haha = "abc";
+  $scope.updateUserType_C = function(){
 
-        //User login
-        $scope.login = function(){
-          
-          if($scope.user_type == "user"){
+    $scope.Model.send({'user_type':"cpr",'ut_method':'set_user_type_c'},function(response){$scope.haha=response.redirect_url;});
+  };
 
-              var data = {'user_type':$scope.user_type,
-                  'ftn':$scope.login_type,
-                  'email':$scope.c_email,
-                  'password':$scope.c_password
-              };
-          }
-          else{
+  $scope.updateUserType_I = function(){
 
-              var data = {'user_type':$scope.user_type,
-                  'ftn':'login',
-                  'reg_num':$scope.reg_num,
-                  'password':$scope.password
-              };
-          }
-                
-          $scope.Model.send(data,function(response) {
-
-              if($scope.login_status){
-                  
-                  window.location.assign("/main");
-              }
-              $scope.login_status = "Login Failed.";
-
-          });
-        };
+    $scope.Model.send({'user_type':"ind",'ut_method':'set_user_type_i'},function(response){location.href=response.redirect_url;});
+  };
 }
 
 function SignupCtrl($scope,$resource){
