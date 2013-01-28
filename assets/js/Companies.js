@@ -16,4 +16,18 @@ function CompanyController($scope) {
     {"name": "Project C",
      "objective": "Look right"}
   ];
+
+      $scope.projects = [
+    {"id": "111",
+     "title": "title for 111",
+     "description": "content for 111"},
+
+     {"id": "222",
+     "title": "title for 222",
+     "description": "content for 222"},
+
+      {"id": "333",
+     "title": "title for 333",
+     "description": "content for 333"},
+  ];
 }
