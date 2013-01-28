@@ -292,12 +292,17 @@
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#{{project.id}}">
         {{project.title}}
+        
+        
       </a>
     </div>
     
     <div id="{{project.id}}" class="accordion-body collapse in">
       <div class="accordion-inner">
         {{project.description}}
+        <br/><br/><br/>
+        
+        <button type="button" class="btn btn-primary" data-loading-text="Loading...">Loading state</button>
       </div>
     </div>
     
