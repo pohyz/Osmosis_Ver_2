@@ -24,6 +24,20 @@
       }
      
     </style>
+    
+    <script type="text/javascript">
+    function showInnerHtml(){
+        var contents=document.getElementById("formArea");
+        alert(contents);
+    }
+  
+	$(function ()  
+	{ $("#profile_popover").popover({placement:'bottom'});
+	  
+	}); 
+</script>
+
+
     <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
 
  
@@ -36,7 +50,7 @@
 	  
 	  
 	  
-	  	  <!-----------  Start of navigation bar for Corporate  ------------>
+	  	  <!-----------  Start of navigation bar  ------------>
 
 
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -48,7 +62,8 @@
             <span class="icon-bar"></span>
           </a>
           <img src="assets/img/OsmosisLogo.png" width=9.5% style=" position:relative;  top: 10px;">
-          <div style="position:relative; top: 5px; float:right; color:grey">Welcome, {{name}} | <a href="index-for-log-out.html" >Logout</a>
+          <div style="position:relative; top: 5px; float:right; color:grey">Welcome, 
+          	<a href="#" id="profile_popover" rel="popover" data-content="Skills:{{skill}} Area of Interest:{{area_of_interest}}" data-original-title="Profile">{{name}}</a> | <a href="index-for-log-out.html" >Logout</a>
           <br>
           <a href="#link" style="float:right">FAQ</a></div>
           <br>
@@ -69,7 +84,7 @@
       </div><!-- /.navbar-inner -->
     </div><!-- /.navbar navbar-inverse navbar-fixed-top -->
  
-    <!-----------  End of navigation bar for Corporate  ------------>
+    <!-----------  End of navigation bar  ------------>
 	  
 	  
 	<br>
@@ -151,7 +166,17 @@
                     
                     Hi! You do not have a team currently.<br>
                     Click on the button below to create one! <br>
-                    <i class="icon-hand-right"></i>&nbsp<button type="submit" class="btn btn-mini">Create Team</button>
+                    <i class="icon-hand-right"></i>&nbsp<button type="submit" class="btn btn-mini" onclick="showInnerHtml()">Create Team</button>
+                    
+                    
+                    <div id="formArea">
+				        <form class="form-horizontal">
+				          UserName : <input type="text" name="userName"> 
+				          UserName : <input type="text" name="userName"> 
+				          UserName : <input type="text" name="userName"> 
+				        </form>
+			        </div>
+                    
                     
                     	  			  							
 					</div>
@@ -234,9 +259,12 @@
                     <div id="collapse01" class="accordion-body collapse in" >
                     <div class="accordion-inner" style="font-size:12px; background-color:white">
                     
-                    <table width="630px">
+                    <table width="400px">
                     <tr>
-                    <td style="padding-bottom:7px">{{name1}}</td>
+                    <td style="padding-bottom:7px" onmouseover="document.getElementById('studentinfo').style.visibility = 'visible'"; onmouseout="document.getElementById('studentinfo').style.visibility = 'hidden'";>
+	                    {{name1}}<div style="display:inline" id="studentinfo">Students info here!</div>
+	                    
+                    </td>
                     <td><button type="submit" class="btn btn-mini" onclick="this.disabled=true">invite to team</button></td>
                     </tr>
                     <tr>
@@ -256,7 +284,7 @@
                     <td><button type="submit" class="btn btn-mini" onclick="this.disabled=true">invite to team</button></td>
                     </tr>
                     </table>
-                                                            	  			  							
+                                                                         	  			  							
 					</div>
 					
 					</div>
