@@ -9,6 +9,45 @@
     
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="assets/js/Companies.js"></script>   
+        <script>
+       
+	    
+	    function reply_click(clicked_id)
+		{
+		
+		    //retrieve the record in the db that matches with the id
+		    
+		    //this is a dummy json record, supposed to retrieve out the respective record according to the id that is clicked
+		     var testJson = '{"projectName":"FYP matching application", "projectObjective":"To build a web platform that allows matching between fyp teams that are seeking sponsors and sponsors that are looking for fyp teams " , "technologiesExposure":"AngularJS, javascript, twitterbootstrap, python","keyLearningPoints": "sing song and have fun", "contactPerson": "Zen", "contactEmail":"zen@zen.com"}';
+        
+		     var project = jQuery.parseJSON(testJson);
+		    
+		    
+		    // if its a match, retrieve the details from the array
+		    
+		    //put it inside the form
+		    var projectName = document.getElementById('projectName');
+		    var projectObjective = document.getElementById('projectObjective');
+		    var technologiesExposure = document.getElementById('technologiesExposure');
+		    var keyLearningPoints = document.getElementById('keyLearningPoints');
+		    var contactPerson = document.getElementById('contactPerson');
+		    var contactEmail = document.getElementById('contactEmail');
+		    
+		    projectName.value = project.projectName;
+		    projectObjective.value = project.projectObjective;
+		    technologiesExposure.value = project.technologiesExposure;
+		    keyLearningPoints.value = project.keyLearningPoints;
+		    contactPerson.value = project.contactPerson;
+		    contactEmail.value = project.contactEmail;
+		    
+		    
+		    
+		    
+		}
+	    
+	    
+    </script>
+
 <!--
     <script src="assets/plunker.js"></script>
     <script src="assets/rainbow.js"></script>
@@ -188,7 +227,6 @@
            
      <br/><br/><br/><br/> 
       <!-- end .row -->
-  
       <!-- end .row -->
       <div class="container-fluid">
   <div class="row-fluid">
@@ -202,39 +240,33 @@
           <div class="control-group">  
             <label class="control-label" for="projectName">Project Name*</label>  
             <div class="controls">  
-              <input type="text" class="input-xlarge" id="projectName" required>  
+              <input type="text" class="input-xlarge" id="projectName" ng-model="projectName" required>  
         
             </div> 
+            
             <br/> 
             
            <div class="control-group">  
             <label class="control-label" for="projectObjective">Project Objective*</label>  
             <div class="controls">  
-              <textarea class="input-xlarge" id="projectObjective" rows="3"></textarea>  
+              <textarea class="input-xlarge" ng-model="projectObjective" id="projectObjective" rows="3"></textarea>  
             </div>  
           </div> 
           
           
           <div class="control-group">  
-            <label class="control-label" for="technicalRequirements">Technical requirements*</label>  
+            <label class="control-label" for="technicalRequirements">Technologies exposure*</label>  
             <div class="controls">  
-              <textarea class="input-xlarge" id="technicalRequirements" rows="3"></textarea>  
+              <textarea class="input-xlarge" ng-model="technologiesExposure" id="technologiesExposure" rows="3"></textarea>  
             </div>  
           </div>           
            
-          
-         <div class="control-group">  
-            <label class="control-label" for="resourcesProvided">Resource(s) Provided*</label>  
-            <div class="controls">  
-              <textarea class="input-xlarge" id="resourcesProvided" rows="3"></textarea>  
-            </div>  
-          </div>   
-          
+    
           
           <div class="control-group">  
             <label class="control-label" for="keyLearningPoints">Key Learning Points*</label>  
             <div class="controls">  
-              <textarea class="input-xlarge" id="keyLearningPoints" rows="3"></textarea>  
+              <textarea class="input-xlarge" ng-model="keyLearningPoints" id="keyLearningPoints" rows="3"></textarea>  
             </div>  
           </div>   
           
@@ -242,7 +274,7 @@
            <div class="control-group">  
             <label class="control-label" for="contactPerson">Contact Person*</label>  
             <div class="controls">  
-              <input type="text" class="input-xlarge" id="contactPerson" required>  
+              <input type="text" class="input-xlarge" ng-model="contactPerson" id="contactPerson" required>  
         
             </div> 
             <br/>   
@@ -250,27 +282,10 @@
           <div class="control-group">  
             <label class="control-label" for="contactEmail">Contact Email*</label>  
             <div class="controls">  
-              <input type="text" class="input-xlarge" id="contactEmail" required>  
+              <input type="text" class="input-xlarge" ng-model="contactEmail" id="contactEmail" required>  
         
             </div> 
             <br/>    
-          
-          <div class="control-group">  
-            <label class="control-label" for="contactNumber">Contact Number*</label>  
-            <div class="controls">  
-              <input type="text" class="input-xlarge" id="contactNumber" required>  
-        
-            </div> 
-            <br/>                      
-           
-          <div class="control-group">  
-            <label class="control-label" for="projectAcademicYear">Project Academic Year*</label>  
-            <div class="controls">  
-              <input type="text" class="input-xSmall" id="projectAcademicYear" required>  
-        
-            </div> 
-            <br/>      
- 
           
 
           <div class="form-actions">  
@@ -291,7 +306,7 @@
   <div class="accordion-group" ng-repeat = "project in projects">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#{{project.id}}">
-        {{project.title}}
+        {{project.projectName}}
         
         
       </a>
@@ -299,17 +314,30 @@
     
     <div id="{{project.id}}" class="accordion-body collapse in">
       <div class="accordion-inner">
-        {{project.description}}
-        <br/><br/><br/>
+        Project Objective: {{project.projectObjective}} <br/><br/>
+        Technologies Exposure: {{project.technologiesExposure}} <br/><br/>
+        Key Learning Points: {{project.keyLearningPoints}} <br/><br/>
+        Contact Person: {{project.contactPerson}} <br/><br/>
+        Contact Email: {{project.contactEmail}}
         
-        <button type="button" class="btn btn-primary" data-loading-text="Loading...">Loading state</button>
+        <br/><br/><br/>
+       
+        <button>Remove</button>
+        <button>Update</button>
+        <button id="{{project.id}}" onClick="reply_click(this.id)">Copy</button>
+
+        
+       	        
+	        
+	        
+        
+
       </div>
     </div>
     
   </div>
   </div>
 </div>
-
 
 
   </div>
@@ -330,7 +358,12 @@
     <script src="assets/js/angular/angular-resource.min.js"></script>
     <script src="assets/js/app.js"></script>
     <script src="assets/js/controllers.js"></script>
-
+<script src="assets/js/jquery-1.9.0.min.js" type="text/javascript"></script>
+<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/js/jquery-ui-1.10.0.custom.min.js" type="text/javascript"></script>
+<script src="assets/js/google-code-prettify/prettify.js" type="text/javascript"></script>
+<script src="assets/js/docs.js" type="text/javascript"></script>
+<script src="assets/js/demo.js" type="text/javascript"></script>
     <script src="assets/js/bootstrap/bootstrap-transition.js"></script>
     <script src="assets/js/bootstrap/bootstrap-alert.js"></script>
     <script src="assets/js/bootstrap/bootstrap-modal.js"></script>
@@ -343,7 +376,6 @@
     <script src="assets/js/bootstrap/bootstrap-collapse.js"></script>
     <script src="assets/js/bootstrap/bootstrap-carousel.js"></script>
     <script src="assets/js/bootstrap/bootstrap-typeahead.js"></script>
-
 
   </body>
 </html>
